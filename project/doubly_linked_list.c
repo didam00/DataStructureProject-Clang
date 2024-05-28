@@ -190,13 +190,38 @@ void showDLL(DLL* list, int step) {
 	if (step > 0) {
 		DLL_Node* cur = list->head;
 
+		printf("    忙");
+		for (int i = 0; i < list->size; i++) {
+			printf("式式式式式式式式式式式");
+		}
+		printf("忖");
+
+		printf("\n");
+		printf("    戌");
+		for (int i = 0; i < list->size; i++) {
+			printf("⊥忙成式式式式式成成式");
+		}
+		printf("戎");
+
+		printf("\n    ");
 		do {
-			printf("%d ", cur->data);
+			printf("  || %-3d ||", cur->data);
 			cur = cur->next;
-			if (cur != list->head) {
-				printf("-> ");
-			}
 		} while (cur != list->head);
+
+		printf("\n    忙");
+		for (int i = 0; i < list->size; i++) {
+			printf("式扛扛式式式式式扛戎∠");
+		}
+		printf("忖");
+		printf("\n");
+
+
+		printf("    戌");
+		for (int i = 0; i < list->size; i++) {
+			printf("式式式式式式式式式式式");
+		}
+		printf("戎");
 
 		printf("\n");
 	} else if (step < 0) {
@@ -243,7 +268,6 @@ void doublyLinkedListView() {
 
 		printf("\n\n");
 
-		printf("    ");
 		if (op == 3) {
 			showDLL(list, -1);
 		} else {

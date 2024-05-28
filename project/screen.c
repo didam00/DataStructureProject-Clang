@@ -28,6 +28,8 @@ void mainView() {
 			printf("\t 2. 트리 \n");
 			printf("\n");
 			printf("\n");
+			printf("\n");
+			printf("\n");
 
 			printf("\n\n");
 			printf("\t 자료구조를 선택하세요: ");

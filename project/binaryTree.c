@@ -4,7 +4,7 @@ BT* initBT() {
 	BinaryTree* newTree = (BT*)malloc(sizeof(BT));
 	newTree->head = NULL;
 
-	return 0;
+	return newTree;
 }
 
 BT_Node* searchBT(BT* tree, DataType key) {
@@ -12,11 +12,11 @@ BT_Node* searchBT(BT* tree, DataType key) {
 	Stack* stack = initStack();
 	BT_Node* cur = NULL;
 
-	pushStack(stack, (int)head);
+	pushStack(stack, head);
 
 	while (!isStackEmpty(stack)) {
 		cur = (BT_Node*)stack->data[stack->top];
-		if (cur == key) break;
+		if (cur->data == key) break;
 
 		if (cur->left) pushStack(stack, (int)cur->left);
 		if (cur->right) pushStack(stack, (int)cur->right);
@@ -32,6 +32,13 @@ BT_Node* newBTNode(DataType data) {
 	newNode->right = NULL;
 
 	return newNode;
+}
+
+MESSAGE_CODE insertFirstBT(BT* tree, DataType data) {
+	BT_Node* newNode = newBTNode(data);
+	tree->head = newNode;
+
+	return SUCCESS;
 }
 
 MESSAGE_CODE insertBT(BT_Node* node, CHILD_POS pos, DataType data) {
@@ -69,3 +76,7 @@ MESSAGE_CODE removeBT(BT_Node* node, CHILD_POS pos) {
 	}
 	return SUCCESS;
 }
+
+//void showBT(BT* tree) {
+//	BT_Node* head = tree->head;
+//}

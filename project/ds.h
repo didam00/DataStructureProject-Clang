@@ -44,26 +44,21 @@
 #define LEFT						0
 #define RIGHT						1
 
-#define FALSE						0
-#define TRUE						1
-
 /************************************/
 
 typedef int	DataType;
 typedef int MESSAGE_CODE;
 typedef int CHILD_POS;
-typedef int boolean;
 
 typedef struct o__SLL_Node {
 	DataType data;
 	struct o__SLL_Node* next;
-} SLL_Node;
+} SLL_Node, QueueNode;
 
 typedef struct {
 	SLL_Node* head;
 	unsigned int size;
 } SLL, SLL;
-
 
 typedef struct o__DLL_Node {
 	DataType data;
@@ -122,5 +117,7 @@ BT* initBT();
 BT_Node* newBTNode(DataType data);
 int getHeightBT(BT* tree);
 MESSAGE_CODE insertBT(BT_Node* node, CHILD_POS pos, DataType data);
-BT_Node* searchBT(BT_Node* node, DataType key);
+MESSAGE_CODE insertFirstBT(BT* tree, DataType data);
+BT_Node* searchBT(BT* tree, DataType key);
 MESSAGE_CODE removeBT(BT_Node* node, CHILD_POS pos);
+void showBT(BT* tree);

@@ -98,12 +98,24 @@ int deleteSLL(SLL* list, unsigned int idx) {
 }
 
 void showSLL(SLL* list) {
+	printf("    ");
+	for (int i = 0; i < list->size; i++) {
+		printf("忙式式式式式式成忖 ");
+	}
+	printf("\n");
 	SLL_Node* cur = list->head;
+	printf("    ");
 	while (cur) {
-		printf("%d -> ", cur->data);
+		printf("弛 %-4d 弛托⊥", cur->data);
 		cur = cur->next;
 	}
-	printf("NULL \n");
+	printf(" NULL ");
+	printf("\n");
+	printf("    ");
+	for (int i = 0; i < list->size; i++) {
+		printf("戌式式式式式式扛戎 ");
+	}
+	printf("\n");
 }
 
 void singlyLinkedListView() {
@@ -135,7 +147,6 @@ void singlyLinkedListView() {
 
 		printf("\n\n");
 
-		printf("    ");
 		showSLL(list);
 		printf("\n\n");
 
