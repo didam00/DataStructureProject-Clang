@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="binaryTree.c" />
     <ClCompile Include="doubly_linked_list.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="queue.c" />

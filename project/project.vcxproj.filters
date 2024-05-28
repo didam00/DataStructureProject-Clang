@@ -36,6 +36,9 @@
     <ClCompile Include="queue.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="binaryTree.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ds.h">

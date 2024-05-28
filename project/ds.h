@@ -22,10 +22,12 @@
 #define GRAD9_COLOR "\033[38;2;95;95;95m"
 #define GRAD10_COLOR "\033[38;2;75;75;75m"
 
-#define EMPTY_LIST_ERROR				0x00
-#define SUCCESS							0x01
-#define REALLOC_LIST					0x02
-#define OUT_OF_INDEX_ERROR				0x0F
+#define SUCCESS							0x20
+#define REALLOC_LIST					0x21
+#define EMPTY_LIST_ERROR				0x40
+#define OUT_OF_INDEX_ERROR				0x41
+#define HAS_LEFT_CHILD_ERROR			0x42
+#define HAS_RIGHT_CHILD_ERROR			0x43
 
 #define LIST						1
 #define		SINGLY_LINKED_LIST		1
@@ -37,10 +39,14 @@
 #define MIN_SIZE					4
 #define MAX_SIZE					255
 
+#define LEFT						0
+#define RIGHT						1
+
 /************************************/
 
 typedef int	DataType;
-
+typedef int MESSAGE_CODE;
+typedef int CHILD_POS;
 
 typedef struct o__SLL_Node {
 	DataType data;
@@ -71,6 +77,16 @@ typedef struct {
 	int top;
 } Stack;
 
+typedef struct o__BT_Node {
+	DataType data;
+	struct o__BT_Node* left;
+	struct o__BT_Node* right;
+} BT_Node;
+
+typedef struct {
+	BT_Node* head;
+} BinaryTree, BT;
+
 /************************************/
 
 void clearBuffer();
@@ -81,17 +97,24 @@ void doublyLinkedListView();
 void stackView();
 
 SLL* initSLL();
-int insertSLL(SLL*, DataType, unsigned int);
+MESSAGE_CODE insertSLL(SLL*, DataType, unsigned int);
 int deleteSLL(SLL*, unsigned int);
 void showSLL(SLL*);
 
 DLL* initDLL();
-int insertDLL(DLL*, DataType, int);
+MESSAGE_CODE insertDLL(DLL*, DataType, int);
 int deleteDLL(DLL*, int);
 void showDLL(DLL*, int);
 
 Stack* initStack();
 int isEmpty(Stack* stack);
 int isFull(Stack* stack);
-int push(Stack* stack, DataType data);
+MESSAGE_CODE push(Stack* stack, DataType data);
 DataType pop(Stack* stack);
+
+BT* initBT();
+BT_Node* newBTNode(DataType data);
+int getHeightBT(BT* tree);
+MESSAGE_CODE insertBT(BT_Node* node, CHILD_POS pos, DataType data);
+BT_Node* searchBT(BT_Node* node, DataType data);
+MESSAGE_CODE removeBT(BT* tree, BT_Node* node);
