@@ -1,4 +1,4 @@
-#include "ds.h";
+#include "ds.h"
 
 void mainView() {
 	int sel = 0;
@@ -43,6 +43,24 @@ void mainView() {
 			printf("\t 3. 스택				\n");
 			printf("\t 4. 큐					\n");
 			printf("\t 5. 덱					\n");
+
+			printf("\n\n");
+			printf("\t 하위 자료구조를 선택하세요: ");
+			scanf_s("%d", &sub_sel);
+
+			switch (sub_sel) {
+				case 0: sel = 0; break;
+				case SINGLY_LINKED_LIST	: singlyLinkedListView(); break;
+				case DOUBLY_LINKED_LIST	: doublyLinkedListView(); break;
+				case STACK				: stackView(); break;
+			}
+		} else if (sel == TREE) {
+			printf("\t 0. 돌아가기			\n");
+			printf("\t 1. 이진 트리			\n");
+			printf("\t 2. 스레드 트리			\n");
+			printf("\n");
+			printf("\n");
+			printf("\n");
 
 			printf("\n\n");
 			printf("\t 하위 자료구조를 선택하세요: ");

@@ -13,17 +13,17 @@ Stack* initStack() {
 	return newStack;
 }
 
-int isEmpty(Stack* stack) {
+boolean isStackEmpty(Stack* stack) {
 	return stack->top == -1;
 }
 
-int isFull(Stack* stack) {
+boolean isStackFull(Stack* stack) {
 	return stack->top == (stack->size - 1);
 }
 
 int pushStack(Stack* stack, DataType data) {
 	int res = SUCCESS;
-	if (isFull(stack)) {
+	if (isStackFull(stack)) {
 		stack->size *= 2;
 		stack->data = (DataType*)realloc(stack->data, stack->size * sizeof(DataType));
 		res = REALLOC_LIST;
@@ -33,7 +33,7 @@ int pushStack(Stack* stack, DataType data) {
 }
 
 int popStack(Stack* stack) {
-	if (isEmpty(stack)) {
+	if (isStackEmpty(stack)) {
 		return;
 	}
 
@@ -41,7 +41,7 @@ int popStack(Stack* stack) {
 }
 
 int peekStack(Stack* stack) {
-	if (isEmpty(stack)) {
+	if (isStackEmpty(stack)) {
 		return;
 	}
 

@@ -7,8 +7,22 @@ BT* initBT() {
 	return 0;
 }
 
-BT_Node* searchBT(BT_Node* node, DataType data) {
+BT_Node* searchBT(BT* tree, DataType key) {
+	BT_Node* head = tree->head;
+	Stack* stack = initStack();
+	BT_Node* cur = NULL;
 
+	pushStack(stack, (int)head);
+
+	while (!isStackEmpty(stack)) {
+		cur = (BT_Node*)stack->data[stack->top];
+		if (cur == key) break;
+
+		if (cur->left) pushStack(stack, (int)cur->left);
+		if (cur->right) pushStack(stack, (int)cur->right);
+	}
+	
+	return cur;
 }
 
 BT_Node* newBTNode(DataType data) {
@@ -20,7 +34,7 @@ BT_Node* newBTNode(DataType data) {
 	return newNode;
 }
 
-int insertBT(BT_Node* node, CHILD_POS pos, DataType data) {
+MESSAGE_CODE insertBT(BT_Node* node, CHILD_POS pos, DataType data) {
 	BT_Node* newNode = newBTNode(data);
 	if (pos == LEFT) {
 		if (node->left != NULL) {
@@ -35,6 +49,23 @@ int insertBT(BT_Node* node, CHILD_POS pos, DataType data) {
 			return HAS_RIGHT_CHILD_ERROR;
 		}
 		node->right = newNode;
+	}
+	return SUCCESS;
+}
+
+MESSAGE_CODE removeBT(BT_Node* node, CHILD_POS pos) {
+	if (pos == LEFT) {
+		if (node->left != NULL) {
+			return HAS_LEFT_CHILD_ERROR;
+		}
+		free(node->left);
+		node->left = NULL;
+	} else if (pos == RIGHT) {
+		if (node->right != NULL) {
+			return HAS_RIGHT_CHILD_ERROR;
+		}
+		free(node->left);
+		node->right = NULL;
 	}
 	return SUCCESS;
 }

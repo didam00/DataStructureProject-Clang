@@ -28,6 +28,7 @@
 #define OUT_OF_INDEX_ERROR				0x41
 #define HAS_LEFT_CHILD_ERROR			0x42
 #define HAS_RIGHT_CHILD_ERROR			0x43
+#define HAS_CHILD_ERROR					0x44
 
 #define LIST						1
 #define		SINGLY_LINKED_LIST		1
@@ -35,6 +36,7 @@
 #define		STACK					3
 #define		QUEUE					4
 #define		DEQUE					5
+#define TREE						2
 
 #define MIN_SIZE					4
 #define MAX_SIZE					255
@@ -42,11 +44,15 @@
 #define LEFT						0
 #define RIGHT						1
 
+#define FALSE						0
+#define TRUE						1
+
 /************************************/
 
 typedef int	DataType;
 typedef int MESSAGE_CODE;
 typedef int CHILD_POS;
+typedef int boolean;
 
 typedef struct o__SLL_Node {
 	DataType data;
@@ -107,14 +113,14 @@ int deleteDLL(DLL*, int);
 void showDLL(DLL*, int);
 
 Stack* initStack();
-int isEmpty(Stack* stack);
-int isFull(Stack* stack);
-MESSAGE_CODE push(Stack* stack, DataType data);
-DataType pop(Stack* stack);
+boolean isStackEmpty(Stack* stack);
+boolean isStackFull(Stack* stack);
+MESSAGE_CODE pushStack(Stack* stack, DataType data);
+DataType popStack(Stack* stack);
 
 BT* initBT();
 BT_Node* newBTNode(DataType data);
 int getHeightBT(BT* tree);
 MESSAGE_CODE insertBT(BT_Node* node, CHILD_POS pos, DataType data);
-BT_Node* searchBT(BT_Node* node, DataType data);
-MESSAGE_CODE removeBT(BT* tree, BT_Node* node);
+BT_Node* searchBT(BT_Node* node, DataType key);
+MESSAGE_CODE removeBT(BT_Node* node, CHILD_POS pos);
