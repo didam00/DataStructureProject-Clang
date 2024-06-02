@@ -77,6 +77,6 @@ MESSAGE_CODE removeBT(BT_Node* node, CHILD_POS pos) {
 	return SUCCESS;
 }
 
-//void showBT(BT* tree) {
-//	BT_Node* head = tree->head;
-//}
+void showBT(BT* tree) {
+	BT_Node* head = tree->head;
+}

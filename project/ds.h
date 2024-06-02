@@ -37,9 +37,12 @@
 #define		QUEUE					4
 #define		DEQUE					5
 #define TREE						2
+#define		BINARY_TREE				1
+#define		THREAD_BINARY_TREE		2
 
 #define MIN_SIZE					4
 #define MAX_SIZE					255
+#define MAX_QUEUE_SIZE				32
 
 #define LEFT						0
 #define RIGHT						1
@@ -88,6 +91,22 @@ typedef struct {
 	BT_Node* head;
 } BinaryTree, BT;
 
+typedef struct {
+	DataType data[MAX_QUEUE_SIZE];
+	int front, rear;
+} Queue;
+
+typedef struct o__TBT_Node {
+	DataType data;
+	struct o__TBT_Node *left, *right;
+	boolean isThread;
+	// isThread가 TRUE라면 right가 노드 중위 후속자이며 FALSE라면 오른쪽 자식을 가리키는 포인터가 된다
+} TBT_Node;
+
+typedef struct {
+	TBT_Node *root;
+} ThreadBinaryTree, TBT;
+
 /************************************/
 
 void clearBuffer();
@@ -113,11 +132,18 @@ boolean isStackFull(Stack* stack);
 MESSAGE_CODE pushStack(Stack* stack, DataType data);
 DataType popStack(Stack* stack);
 
+//Queue* initQueue();
+
 BT* initBT();
 BT_Node* newBTNode(DataType data);
-int getHeightBT(BT* tree);
+unsigned int getHeightBT(BT* tree);
 MESSAGE_CODE insertBT(BT_Node* node, CHILD_POS pos, DataType data);
 MESSAGE_CODE insertFirstBT(BT* tree, DataType data);
 BT_Node* searchBT(BT* tree, DataType key);
 MESSAGE_CODE removeBT(BT_Node* node, CHILD_POS pos);
 void showBT(BT* tree);
+
+// Thread Binary Tree
+/** 다음 순회할 노드(successor) 찾기 */
+TBT_Node* findSuccessor(TBT_Node* node);
+void inorderThread(ThreadBinaryTree* tree);

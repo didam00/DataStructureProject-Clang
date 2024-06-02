@@ -1,13 +1,19 @@
 #include "ds.h"
 int main() {
-	BinaryTree* tree = initBT();
-	insertFirstBT(tree, 2);
-	printf("%d", insertBT(searchBT(tree, 2), LEFT,	3));
-	printf("%d", insertBT(searchBT(tree, 2), RIGHT, 4));
-	printf("%d", insertBT(searchBT(tree, 3), LEFT,	5));
-	printf("%d", insertBT(searchBT(tree, 3), RIGHT, 6));
-	printf("%d", insertBT(searchBT(tree, 4), LEFT,	7));
-	printf("%d", insertBT(searchBT(tree, 4), RIGHT,	8));
+			TBT_Node b1 = { 1, NULL, NULL, TRUE };
+			TBT_Node b2 = { 2, NULL, NULL, TRUE };
+		TBT_Node b3 = { 3, &b1, &b2, FALSE };
+			TBT_Node b4 = { 4, NULL, NULL, TRUE };
+			TBT_Node b5 = { 5, NULL, NULL, FALSE };
+		TBT_Node b6 = { 6, &b4, &b5, FALSE };
+	TBT_Node b7 = { 7, &b3, &b6, FALSE };
+	TBT tree = { &b7 };
 
-	mainView();
+	b4.right = &b6;
+	b2.right = &b7;
+	b1.right = &b3;
+
+	inorderThread(&tree);
+
+	//mainView();
 }

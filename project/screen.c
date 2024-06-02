@@ -59,7 +59,7 @@ void mainView() {
 		} else if (sel == TREE) {
 			printf("\t 0. 돌아가기			\n");
 			printf("\t 1. 이진 트리			\n");
-			printf("\t 2. 스레드 트리			\n");
+			printf("\t 2. 스레드 이진 트리		\n");
 			printf("\n");
 			printf("\n");
 			printf("\n");

@@ -135,6 +135,7 @@
     <ClCompile Include="single_linked_list.c" />
     <ClCompile Include="stack.c" />
     <ClCompile Include="sys.c" />
+    <ClCompile Include="threadBinaryTree.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ds.h" />

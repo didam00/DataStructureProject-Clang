@@ -39,6 +39,9 @@
     <ClCompile Include="binaryTree.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="threadBinaryTree.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ds.h">
